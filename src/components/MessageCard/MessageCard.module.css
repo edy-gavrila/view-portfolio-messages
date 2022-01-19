@@ -4,4 +4,38 @@
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
   background-color: lavender;
   text-align: left;
+  margin-bottom: 2rem;
+}
+
+.btns-container {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.btn {
+  padding: 5px 20px;
+  border: none;
+  margin-right: 1rem;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.email-btn {
+  background-color: cornflowerblue;
+}
+
+.email-btn:hover {
+  background-color: rgb(84, 124, 199);
+}
+.delete-btn {
+  background-color: rgb(221, 103, 148);
+}
+
+.delete-btn:hover {
+  background-color: rgb(182, 83, 83);
 }
