@@ -1,0 +1,7 @@
+.message-card {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  background-color: lavender;
+  text-align: left;
+}
