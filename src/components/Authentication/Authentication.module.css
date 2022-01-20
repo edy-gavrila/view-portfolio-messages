@@ -1,0 +1,59 @@
+.login-card-container {
+  height: calc(99.9vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card-container h2 {
+  color: cornflowerblue;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.login-form {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  width: 350px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  background-color: lavender;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  color: rgb(76, 112, 179);
+}
+
+.login-form input {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  padding: 5px;
+  border: 2px solid cornflowerblue;
+  border-radius: 10px;
+  width: 100%;
+  color: rgb(76, 112, 179);
+}
+
+.login-form input:invalid {
+  color: red;
+}
+
+.login-form input[type="submit"] {
+  border: none;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 7px 0;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 10px;
+}
+
+.error-container {
+  color: red;
+}

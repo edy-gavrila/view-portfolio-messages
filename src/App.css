@@ -1,9 +1,5 @@
 .App {
   text-align: center;
-}
-
-.main {
-  min-height: calc(99.9vh - 4rem);
-  padding: 3rem 5rem;
-  /* border: 1px solid black; */
+  min-height: 100vh;
+  min-width: 350px;
 }

@@ -1,0 +1,17 @@
+.main {
+  min-height: calc(99.9vh - 4rem);
+  padding: 3rem 25%;
+  /* border: 1px solid black; */
+}
+
+@media (max-width: 512px) {
+  .main {
+    padding: 3rem 5px;
+  }
+}
+
+@media (max-width: 960px) {
+  .main {
+    padding: 3rem 5rem;
+  }
+}

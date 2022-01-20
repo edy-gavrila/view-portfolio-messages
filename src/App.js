@@ -1,28 +1,30 @@
+/* eslint-disable quotes */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
 import "./App.css";
-import Header from "./components/Header/Header";
-import MessageCard from "./components/MessageCard/MessageCard";
-import { getMessageData } from "./api/database";
 import { useEffect, useState } from "react";
+import Header from "./components/Header/Header";
+import Messages from "./components/Messages/Messages";
+
+import Authentication from "./components/Authentication/Authentication";
+import { isUserSignedIn } from "./api/signInOut";
 
 function App() {
-  const [messages, setMessages] = useState([]);
-  useEffect(() => {
-    getMessageData().then((data) => {
-      data.sort((a, b) => {
-        return a.id - b.id;
-      });
-      setMessages([...data]);
-    });
-  }, []);
-  console.log(messages);
+  const [isAuth, setIsAuth] = useState(false);
 
-  const messageCards = messages.map((message) => (
-    <MessageCard data={message} key={message.id} />
-  ));
+  useEffect(() => {
+    if (isUserSignedIn()) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  }, []);
   return (
     <div className="App">
-      <Header />
-      <main className="main">{messageCards}</main>
+      <Header isAuth={isAuth} onSignOut={() => setIsAuth(false)} />
+      {(isAuth && <Messages />) || (
+        <Authentication onAuthChanged={() => setIsAuth(true)} />
+      )}
     </div>
   );
 }
