@@ -5,13 +5,13 @@ import React, { useState, useEffect } from "react";
 import classes from "./Messages.module.css";
 
 import MessageCard from "../MessageCard/MessageCard";
-import { getMessageData } from "../../api/database";
+import { getMessagesFromFirebaseDb } from "../../api/database";
 
 function Messages() {
   const [messages, setMessages] = useState([]);
 
   const refreshMessageData = () => {
-    getMessageData().then((data) => {
+    getMessagesFromFirebaseDb().then((data) => {
       data.sort((a, b) => b.id - a.id);
       setMessages([...data]);
     });

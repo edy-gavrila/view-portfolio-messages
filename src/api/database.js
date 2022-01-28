@@ -12,26 +12,24 @@ import {
 } from "firebase/firestore";
 import firebaseConfig from "../credentials/firebaseConfig";
 
-const app = initializeApp(firebaseConfig);
+const firebaseAppReference = initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const fireStoreDatabase = getFirestore(firebaseAppReference);
 
-const getMessageData = async () => {
-  const data = [];
-  const messagesCol = collection(db, "messages");
+const getMessagesFromFirebaseDb = async () => {
+  const messagesData = [];
+  const messagesDbReference = collection(fireStoreDatabase, "messages");
 
-  const messagesSnapShot = await getDocs(messagesCol);
+  const messagesSnapShot = await getDocs(messagesDbReference);
   messagesSnapShot.forEach((document) => {
-    data.push({ ...document.data(), id: document.id });
+    messagesData.push({ ...document.data(), id: document.id });
   });
-  console.log(data);
-  return data;
+  return messagesData;
 };
 
-const deleteMessage = async (id) => {
-  console.log(doc(db, "messages", id));
-  const result = await deleteDoc(doc(db, "messages", id));
+const deleteMessageFromFirebaseDb = async (id) => {
+  const result = await deleteDoc(doc(fireStoreDatabase, "messages", id));
   return result;
 };
 
-export { getMessageData, deleteMessage };
+export { getMessagesFromFirebaseDb, deleteMessageFromFirebaseDb };

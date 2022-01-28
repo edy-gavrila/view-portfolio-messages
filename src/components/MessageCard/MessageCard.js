@@ -3,12 +3,13 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/react-in-jsx-scope */
 import React from "react";
-import { deleteMessage } from "../../api/database";
+import { deleteMessageFromFirebaseDb } from "../../api/database";
+import UserIcon from "../../UI/Icons/UserIcon";
 import classes from "./MessageCard.module.css";
 
 function MessageCard({ data, onRefreshMessageData }) {
   const deleteMessageHandler = () => {
-    deleteMessage(data.id)
+    deleteMessageFromFirebaseDb(data.id)
       .then(() => {
         console.log("Message deleted");
         onRefreshMessageData();
@@ -19,12 +20,18 @@ function MessageCard({ data, onRefreshMessageData }) {
   };
   return (
     <div className={classes["message-card"]}>
-      <h2>{data.name}</h2>
-      <small>{data.email}</small>
-      <br />
-      <br />
-      <h3>{data.subject}</h3>
-      <p>{data.message}</p>
+      <div className={classes["user-info"]}>
+        <UserIcon />
+        <div className={classes["name-container"]}>
+          <h2>{data.name}</h2>
+          <small>{data.email}</small>
+        </div>
+      </div>
+      <div className={classes["message-container"]}>
+        <h3>{data.subject}</h3>
+        <p>{data.message}</p>
+      </div>
+
       <div className={classes["btns-container"]}>
         <button
           type="button"

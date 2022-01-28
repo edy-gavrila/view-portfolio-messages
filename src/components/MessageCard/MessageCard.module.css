@@ -1,25 +1,58 @@
 .message-card {
-  padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-  background-color: lavender;
+  background-color: white;
   text-align: left;
   margin-bottom: 2rem;
-  color:rgb(56, 81, 128);
+  color: rgb(56, 81, 128);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  background-color: rgb(188, 208, 253);
+  padding: 1rem;
+}
+
+.name-container {
+  margin-left: 1rem;
+}
+
+.message-container {
+  padding: 1rem 1rem 1rem calc(60px + 2rem);
 }
 
 .btns-container {
-  margin-top: 2rem;
   text-align: right;
+  padding: 2rem;
 }
 
 .btn {
-  padding: 5px 20px;
-  border: none;
-  margin-right: 1rem;
-  color: white;
-  border-radius: 3px;
+  align-items: center;
+  appearance: none;
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #ffffff;
   cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd, sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s, background-position 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+  margin-right: 10px;
 }
 
 .btn:active {
@@ -27,16 +60,34 @@
 }
 
 .email-btn {
-  background-color: cornflowerblue;
+  background-color: #3eb2fd;
+  background-image: linear-gradient(1deg, #4f58fd, #149bf3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+}
+
+.email-btn:active,
+.email-btn:focus {
+  outline: none;
 }
 
 .email-btn:hover {
-  background-color: rgb(84, 124, 199);
+  background-position: -20px -20px;
 }
+
+.email-btn:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 0.125em;
+}
+
 .delete-btn {
-  background-color: rgb(221, 103, 148);
+  background-color: #fd3e5e;
+  background-image: linear-gradient(1deg, #fd4f4f, #f39214 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
 }
 
 .delete-btn:hover {
-  background-color: rgb(182, 83, 83);
+  background-position: -20px -20px;
+}
+
+.delete-btn:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 0.125em;
 }

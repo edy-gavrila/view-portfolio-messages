@@ -26,15 +26,7 @@ function Authentication({ onAuthChanged }) {
     });
   };
 
-  const clearErrorHandler = () => {
-    setAuthError({
-      isError: false,
-      error: { code: null, message: "" },
-    });
-  };
-
   const authSuccessHandler = () => {
-    clearErrorHandler();
     onAuthChanged();
   };
 

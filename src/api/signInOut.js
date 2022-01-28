@@ -2,42 +2,45 @@
 import {
   browserLocalPersistence,
   getAuth,
+  onAuthStateChanged,
   setPersistence,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 
-const signInUser = (credentials, onSucces, onFail) => {
+const signInUser = (credentials, onSignInSucces, onSignInFail) => {
   const { email, password } = credentials;
   const auth = getAuth();
   setPersistence(auth, browserLocalPersistence)
     .then(() => signInWithEmailAndPassword(auth, email, password))
     .then(() => {
-      onSucces();
+      onSignInSucces();
     })
     .catch((error) => {
-      onFail(error);
+      onSignInFail(error);
     });
 };
 
-const signOutUser = (onSuccess, onFail) => {
+const signOutUser = (onSignOutSuccess, onSignOutFail) => {
   const auth = getAuth();
   signOut(auth)
     .then(() => {
-      onSuccess();
+      onSignOutSuccess();
     })
     .catch((error) => {
-      onFail(error);
+      onSignOutFail(error);
     });
 };
 
-const isUserSignedIn = () => {
+const attemptToRestoreUser = (onUserLoggenIn, OnUserLoggedOut) => {
   const auth = getAuth();
-  const user = auth.currentUser;
-  if (user) {
-    return true;
-  }
-  return false;
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      onUserLoggenIn();
+    } else {
+      OnUserLoggedOut();
+    }
+  });
 };
 
-export { signInUser, signOutUser, isUserSignedIn };
+export { signInUser, signOutUser, attemptToRestoreUser };

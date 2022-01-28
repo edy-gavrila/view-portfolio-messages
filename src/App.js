@@ -7,17 +7,21 @@ import Header from "./components/Header/Header";
 import Messages from "./components/Messages/Messages";
 
 import Authentication from "./components/Authentication/Authentication";
-import { isUserSignedIn } from "./api/signInOut";
+import { attemptToRestoreUser } from "./api/signInOut";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
 
+  const setUserSignedIn = () => {
+    setIsAuth(true);
+  };
+
+  const setUserSignedOut = () => {
+    setIsAuth(false);
+  };
+
   useEffect(() => {
-    if (isUserSignedIn()) {
-      setIsAuth(true);
-    } else {
-      setIsAuth(false);
-    }
+    attemptToRestoreUser(setUserSignedIn, setUserSignedOut);
   }, []);
   return (
     <div className="App">
